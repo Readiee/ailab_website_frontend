@@ -1,0 +1,113 @@
+@import './base.css';
+
+#app {
+  /* max-width: 1280px; */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+  min-height: 100vh;
+  font-weight: normal;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--grey);
+  transition: 0.2s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--purple);
+  }
+}
+
+hr {
+  display: block;
+  height: 1px;
+  width: 100vw;
+  border: 0;
+  border-top: 1px solid var(--ghost-grey);
+  margin: 1em 0;
+  padding: 0;
+}
+
+.container {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  font-family: 'Xolonium', sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+}
+
+h2 {
+  color: white;
+  font-family: 'Xolonium', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+}
+
+h3 {
+  color: white;
+  font-family: 'Xolonium', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55rem;
+  
+}
+
+h4 {
+  color: white;
+  font-family: 'Xolonium', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+h5 {
+  color: white;
+  font-family: 'Xolonium', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+}
+
+p {
+  font-family: 'JuraMedium', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2rem;
+}
+
+.svg-hover:hover path {
+  transition: 0.2s ease-in-out;
+  fill: var(--purple);
+}
+.svg-hover:not(hover) path {
+      transition: 0.2s ease-in-out;
+      fill: var(--dark-grey)
+}
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .2s
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+button {
+  &:active {
+    filter: brightness(85%)
+  }
+}

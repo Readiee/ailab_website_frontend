@@ -1,0 +1,117 @@
+:root {
+  --primary: linear-gradient(90deg, #5C24FF 0%, #834FD9 47.81%, #7C35F0 100%);
+  --dark: #070015;
+  --purple: #7C35F0;
+  --grey: #8E8E8E;
+  --ghost-grey: #1F172E;
+  --dark-grey: #5B5666;
+  --accent: linear-gradient(220deg, #FF3BFF 10%, #5C24FF 50%, #ECBFBF 80%, #D94FD5 100%);
+  --accent-reverse: linear-gradient(70deg, #FF3BFF 5%, #5C24FF 60%, #ECBFBF 80%, #D94FD5 100%);
+  --bgr-hover: linear-gradient(270deg, #231A36 1.97%, rgba(61, 31, 124, 0.00) 108.44%);
+}
+
+.accent {
+	background: var(--accent);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: var(--purple);
+	font-weight: 700;
+}
+
+.accent-reverse {
+ 	background: var(--accent-reverse);
+ 	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: var(--purple);
+	font-weight: 700;
+}
+
+.primary {
+	background: var(--primary);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: var(--purple);
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Xolonium';
+	src: url('fonts/xolonium.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/xolonium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/xolonium.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/xolonium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/xolonium.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/xolonium.svg#xolonium') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'Xolonium Bold';
+	src: url('fonts/xolonium_bold.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/xolonium_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/xolonium_bold.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/xolonium_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/xolonium_bold.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/xolonium_bold.svg#xolonium_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'JuraBook';
+	src: url('fonts/jurabook.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/jurabook.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/jurabook.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/jurabook.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/jurabook.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/jurabook.svg#jurabook') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'JuraDemiBold';
+	src: url('fonts/jurademibold.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/jurademibold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/jurademibold.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/jurademibold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/jurademibold.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/jurademibold.svg#jurademibold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'JuraLight';
+	src: url('fonts/juralight.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/juralight.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/juralight.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/juralight.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/juralight.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/juralight.svg#juralight') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+	font-family: 'JuraMedium';
+	src: url('fonts/juramedium.eot'); /* IE 9 Compatibility Mode */
+	src: url('fonts/juramedium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('fonts/juramedium.woff2') format('woff2'), /* Super Modern Browsers */
+		url('fonts/juramedium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('fonts/juramedium.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('fonts/juramedium.svg#juramedium') format('svg'); 
+}
+
+body {
+	background: var(--dark);
+	margin: 0;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+  	color: var(--grey);
+	font-family: 'JuraMedium', sans-serif;
+	font-weight: 400;
+	line-height: normal;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
