@@ -12,6 +12,12 @@
         <AppBtnWithIcon variant="plain">Все публикации</AppBtnWithIcon>
       </a>
     </div>
+
+    <div class="design">
+      <img class="light-1" src="@/assets/images/light-3.png" alt="design">
+      <img class="light-2" src="@/assets/images/light-2.png" alt="design">
+      <img class="light-3" src="@/assets/images/light-2.png" alt="design">
+    </div>
   </div>
 </template>
 
@@ -39,5 +45,35 @@ const { publications } = usePublications()
   transition: 0.2 ease-in-out;
   }
 }
+
+.container {
+  position: relative;
+}
+.design {
+    & > img {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .light-1 {
+      top: -4rem;
+      right: 0rem;
+    }
+
+    .light-2 {
+      width: 320px;
+      top: 18rem;
+      left: -12rem;
+    }
+
+    .light-3 {
+      width: 320px;
+      top: 46rem;
+      right: 0rem;
+    }
+
+}
+
 
 </style>

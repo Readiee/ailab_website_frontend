@@ -31,7 +31,7 @@ const props = defineProps({
 
 .publication-item {
   width: 100%;
-  max-width: 1080px;
+  // max-width: 1080px;
 
   display: grid;
   grid-template-columns: 54px 1fr 100px;
@@ -54,6 +54,7 @@ const props = defineProps({
     // justify-content: center;
     // padding-right: 20px;
     justify-content: flex-start;
+
   }
 
   .end {
@@ -101,8 +102,33 @@ const props = defineProps({
 
     border-radius: 8px;
   }
-  &:hover::before {
-  opacity: 1;
+    &:hover::before {
+    opacity: 1;
+  }
 }
-}
+
+@media screen and (max-width: 721px) {
+    .publication-item {
+      grid-template-columns: 38px 1fr;
+      padding: 20px 24px;
+    }
+    .end {
+      display: none !important;
+    }
+
+    .main {
+      p, h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        -webkit-line-clamp: 3; 
+      }
+
+      h3 {
+        -webkit-line-clamp: 5; 
+      }
+    }
+
+  }
 </style>

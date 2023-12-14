@@ -16,10 +16,12 @@ import ProjectsSection from '@/components/home/ProjectsSection.vue'
 import PublicationsSection from '@/components/home/PublicationsSection.vue'
 import EmployeesSection from '@/components/home/EmployeesSection.vue'
 import ContactUsSections from '@/components/home/ContactUsSections.vue'
+// import AppSectionIndent from '@/components/AppSectionIndent.vue'
 </script>
 
 <style scoped lang="scss">
 .home-view {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +31,15 @@ import ContactUsSections from '@/components/home/ContactUsSections.vue'
   }
   & > *:first-child {
     margin-top: 110px;
+
+    @media screen and (max-width: 767px) {
+      margin-top: 70px;
+    }
+
+    @media screen and (max-width: 564px) {
+      margin-top: 32px;
+    }
   }
 }
+
 </style>

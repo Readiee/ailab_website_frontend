@@ -7,7 +7,7 @@
         <span class="gradient-text"> искусственного<br>интеллекта </span>
         <span class="plain">ИКИТ СФУ</span>
       </h1>
-      <p class="my-6">Добро пожаловать в лабораторию искусственного интеллекта,<br>где мы преображаем фантазии в инновации!</p>
+      <p class="my-6">Добро пожаловать в лабораторию искусственного интеллекта, где мы преображаем фантазии в инновации!</p>
       <AppBtnWithIcon class="mt-2" icon="forward" @click="router.push({ name: 'projects' })">К проектам</AppBtnWithIcon>
     </div>
 
@@ -33,8 +33,9 @@ const router = useRouter()
 </script>
 
 <style scoped lang="scss">
+
 .wrapper {
-  padding-bottom: 140px;
+  padding-bottom: 130px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -42,16 +43,14 @@ const router = useRouter()
   align-items: center;
 
   h1 {
-    color: white;
-    font-size: 3rem;
     font-family: 'Xolonium', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    line-height: 3.2rem;
-    letter-spacing: 1.5px;
+
   }
 
   p {
+    max-width: 530px;
     line-height: normal;
     font-weight: 400;
   }
@@ -60,6 +59,14 @@ const router = useRouter()
     background: white;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  @media screen and (max-width: 1279px) {
+    padding-bottom: 120px;
+  }
+
+  @media screen and (max-width: 1079px) {
+    padding-bottom: 0;
   }
 }
 
@@ -100,36 +107,137 @@ const router = useRouter()
     }
 
     #light-left {
-      top: -16rem;
-      left: -20rem;
+      width: 430px;
+      top: -10rem;
+      left: -4rem;
     }
 
     #light-right {
-      width: 35%;
-      top: -2rem;
-      right: -11rem;
+      width: 360px;
+      top: 1rem;
+      right: 0;
     }
 
     #light-bottom {
-      top: 0;
+      width: 600px;
+      top: 4rem;
       left: 5rem;
     }
 
     #shape-left {
-      top: -6rem;
-      left: -8rem;
+      width: 260px;
+      top: -6.5rem;
+      left: -2.5rem;
     }
 
     #shape-right {
-      bottom: 0;
-      right: -5rem;
+      width: 240px;
+      top: 8rem;
+      right: 1rem;
     }
 
     #shape-bottom {
+      width: 150px;
       bottom: -3rem;
       left: 20rem;
     }
-  } 
-}
+
+    @media screen and (max-width: 1279px) {
+        #light-top {
+        top: -35rem;
+        right: 5rem;
+      }
+
+      #light-left {
+        width: 400px;
+        top: -11rem;
+        left: -7rem;
+      }
+
+      #light-right {
+        width: 300px;
+        top: 3rem;
+        right: 0;
+      }
+
+      #light-bottom {
+        width: 500px;
+        top: 5rem;
+        left: 3rem;
+      }
+
+      #shape-left {
+        width: 220px;
+        top: -6.5rem;
+        left: -2.5rem;
+      }
+
+      #shape-right {
+        width: 200px;
+        top: 8rem;
+        right: 0.5rem;
+      }
+
+      #shape-bottom {
+        width: 130px;
+        bottom: -2rem;
+        left: 16rem;
+      }
+    }
+
+    @media screen and (max-width: 1079px) {
+        #light-top {
+        top: -35rem;
+        right: 0;
+      }
+
+      #light-left {
+        width: 340px;
+        top: -10rem;
+        left: -10rem;
+      }
+
+      #light-right {
+        width: 220px;
+        top: 4rem;
+        right: 0;
+      }
+
+      #light-bottom {
+        width: 380px;
+        top: 11rem;
+        left: 0;
+      }
+
+      #shape-left {
+        display: none;
+        // width: 200px;
+        // top: -7.5rem;
+        // left: -2.5rem;
+      }
+
+      #shape-right {
+        display: none;
+        // width: 160px;
+        // top: 11rem;
+        // right: 0.5rem;
+      }
+
+      #shape-bottom {
+        display: none;
+        // width: 110px;
+        // bottom: -3rem;
+        // left: 16rem;
+      }
+    }
+
+    @media screen and (max-width: 564px) {
+        #light-right {
+          display: none;
+      }
+    }
+  }
+} 
+
 
 </style>

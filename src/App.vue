@@ -13,12 +13,16 @@ import AppFooter from '@/components/AppFooter.vue'
 
 <style scoped lang="scss">
 .main {
-  height: 100%;
-  flex-grow: 1;
-  padding-top: 120px;
+  min-height: 100%;
+  padding-top: 110px;
+	flex: 1 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #footer {
-  flex-shrink: 0;
+	flex: 0 0 auto;
 }
 </style>

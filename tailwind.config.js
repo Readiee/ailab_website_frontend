@@ -10,4 +10,7 @@ module.exports = {
 		extend: {},
 	},
 	plugins: [],
+	blocklist: [
+		'container'
+	]
 }

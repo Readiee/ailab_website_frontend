@@ -97,6 +97,7 @@
 body {
 	background: var(--dark);
 	margin: 0;
+	padding: 0;
 	color: #fff;
 	display: flex;
 	flex-direction: column;

@@ -21,16 +21,19 @@ watch(picked, (newValue) => {
 
 <style scoped lang="scss">
 .switch-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     input {
         display: none;
     }
 
     label {
         padding: 12px;
-        background: none;
+        background: var(--dark);
         border: 2px solid var(--purple);
 
-        width: 190px;
+        width: 200px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -48,6 +51,11 @@ watch(picked, (newValue) => {
         &.selected {
             transition: 0.15s ease-in-out;
             background: var(--purple);
+        }
+
+        @media screen and (max-width: 564px) {
+            font-size: 14px;
+            width: 170px;
         }
     }
     .switch-button-start {

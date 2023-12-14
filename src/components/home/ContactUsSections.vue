@@ -24,13 +24,19 @@
         </div>
       </form>
 
-      <div class="map container">
-        <AppMap class="mt-16" />
-        <div class="flex justify-between mt-3">
+      <div class="map mt-16">
+        <AppMap />
+        <div class="flex justify-between mt-3 map-undercaption">
           <a class="underline" href="https://yandex.ru/maps/62/krasnoyarsk/house/ulitsa_akademika_kirenskogo_26k1/bUsYcQ5nTE0BQFtvfXV4dXhnYg==/?ll=92.797579%2C55.994324&z=19.54">ул. Академика Киренского, 26, к.1</a>
           <a href="tel:+71234567890">+7 123 456 78 90</a>
         </div>
       </div>
+    </div>
+
+    <div class="design">
+      <img class="light-1" src="@/assets/images/light-2.png" alt="design">
+      <img class="light-2" src="@/assets/images/light-3.png" alt="design">
+      <img class="light-3" src="@/assets/images/light-2.png" alt="design">
     </div>
   </div>
 </template>
@@ -50,8 +56,6 @@ const formData = ref({
 	email: '',
 	question: '',
 })
-
-const name = ref('')
 
 const loading = ref(false)
 const sendedState = ref(false)
@@ -95,9 +99,9 @@ const submitForm = async () => {
   display: flex;
   justify-content: center;
 
-  & > button {
+  // & > button {
     // width: 160px;
-  }
+  // }
   .afterActionCaption {
   font-size: 16px;
   color: var(--grey);
@@ -112,6 +116,7 @@ const submitForm = async () => {
 
 .map {
   max-width: 1080px;
+  width: 100%;
 }
 .section {
   width: 100%;
@@ -128,6 +133,10 @@ const submitForm = async () => {
       display: flex;
       justify-content: space-between;
       gap: 16px;
+
+      @media screen and (max-width: 564px) {
+        flex-direction: column;
+      }
     }
     
     input {
@@ -139,6 +148,45 @@ const submitForm = async () => {
         resize: none;
       }
   }
+}
+
+.map-undercaption {
+  @media screen and (max-width: 461px) {
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+}
+
+
+.container {
+  position: relative;
+}
+.design {
+    & > img {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .light-2 {
+      top: 12rem;
+      right: 0rem;
+    }
+
+    .light-1 {
+      width: 320px;
+      top: 16rem;
+      left: -5rem;
+    }
+
+    .light-3 {
+      width: 320px;
+      top: 42rem;
+      right: 0rem;
+    }
+
 }
 
 </style>

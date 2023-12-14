@@ -19,7 +19,7 @@
 .map-container {
     position: relative;
     width: 100%;
-    height: 600px;
+    /* max-height: 600px; */
     overflow: hidden;
     border-radius: 8px;
 }
@@ -44,4 +44,13 @@
     width: 100%;
     border-radius: 8px;
 }
+
+
+@media screen and (max-width: 664px) {
+    .map-container, .map-container::before {
+      height: 0;
+      width: 100%;
+      padding-bottom: 100%;
+    }
+  }
 </style>

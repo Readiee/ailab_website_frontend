@@ -33,7 +33,6 @@
 
 <script setup lang="ts">
 import type { Employee } from '@/api/types'
-import { computed } from 'vue'
 // import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import AppAvatar from '@/components/UI/AppAvatar.vue'
 
@@ -41,16 +40,12 @@ const props = defineProps({
 	employee: { type: Object as () => Employee, required: true }
 })
 
-const name = computed(() => {
-	return props.employee.first_name + ' ' + props.employee.last_name
-})
-
 </script>
 
 <style scoped lang="scss">
 
 .hover-border {
-  transition: .2s;
+  transition: .3s ease-in-out;
 }
 .hover-border:hover {
   box-shadow: inset 0px 0px 0px 1px var(--purple);
@@ -58,7 +53,7 @@ const name = computed(() => {
 }
 
 .employee-item {
-  width: 340px; // карточка
+  min-width: 346px; // карточка
 
   display: flex;
   flex-direction: column;
@@ -84,9 +79,9 @@ const name = computed(() => {
     font-size: 14px;
     align-items: center;
 
+
     &:hover path {
       stroke: var(--purple);
-      transition: 0.2ms ease-in-out;
     }
   }
 }

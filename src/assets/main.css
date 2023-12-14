@@ -2,12 +2,18 @@
 
 #app {
   /* max-width: 1280px; */
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 0 auto;
   min-height: 100vh;
   font-weight: normal;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
 }
 
 a {
@@ -34,8 +40,16 @@ hr {
 }
 
 .container {
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 36px;
+  padding-right: 36px;
+
+  @media screen and (max-width: 510px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* border: blue 1px solid; */
+
 }
 
 .section {
@@ -47,8 +61,22 @@ hr {
 h1 {
   color: white;
   font-family: 'Xolonium', sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 48px;
+  line-height: 3.2rem;
+  letter-spacing: 1.5px;
+
+  
+  @media screen and (max-width: 767px) {
+    font-size: 36px;
+    line-height: 2.4rem;
+  }
+
+  @media screen and (max-width: 510px) {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: 0;
+  }
 }
 
 h2 {
@@ -56,6 +84,9 @@ h2 {
   font-family: 'Xolonium', sans-serif;
   font-weight: 400;
   font-size: 40px;
+  @media screen and (max-width: 510px) {
+    font-size: 30px;
+  }
 }
 
 h3 {
@@ -65,6 +96,10 @@ h3 {
   font-size: 18px;
   line-height: 1.55rem;
   
+  @media screen and (max-width: 510px) {
+    font-size: 16px;
+    line-height: normal;
+  }
 }
 
 h4 {
@@ -87,7 +122,13 @@ p {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.2rem;
+
+  @media screen and (max-width: 510px) {
+    font-size: 14px;
+    line-height: 1rem;
+  }
 }
+
 
 .svg-hover:hover path {
   transition: 0.2s ease-in-out;
@@ -106,8 +147,19 @@ p {
   opacity: 0;
 }
 
-button {
-  &:active {
-    filter: brightness(85%)
-  }
+button:active {
+  filter: brightness(85%)
+}
+
+*::selection {
+  background: var(--purple);
+  color: #ffffff;
+}
+*::-moz-selection {
+  background: var(--purple);
+  color: #ffffff;
+}
+*::-webkit-selection {
+  background: var(--purple);
+  color: #ffffff;
 }
