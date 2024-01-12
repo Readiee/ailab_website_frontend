@@ -1,18 +1,12 @@
-// import { photoApi } from '@/api/index'
-// import type { Contact } from '@/api/types'
+import { photoApi } from '@/api/index'
 
-// export async function getProjects() {
-// 	return photoApi.get('/get-projects/')
-// }
+export async function runPhotoScript(slug:string) {
+	return photoApi.get(slug + '/script/')
+		.then(response => {
+			new Function(response.data)()
+		})
+		.catch(e => {
+			console.log(e)
+		})
+}
 
-// export async function getPublications() {
-// 	return photoApi.get('/get-publications/')
-// }
-
-// export async function getEmployees() {
-// 	return photoApi.get('/get-employees/')
-// }
-
-// export async function createContact( contact:Contact ) {
-// 	return photoApi.post('/create-contact/', contact)
-// }

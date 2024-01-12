@@ -49,15 +49,21 @@ const imgClasses = computed(() => {
 }
 
 .img-small {
-        width: 24px;
-        height: 24px;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        min-height: 40px;
       }
       .img-medium {
-        width: 56px;
-        height: 56px;
+        width: 48px;
+        min-width: 48px;
+        height: 48px;
+        min-height: 48px;
       }
       .img-large {
         width: 200px;
+        min-width: 200px;
         height: 200px;
+        min-height: 200px;
       }
 </style>

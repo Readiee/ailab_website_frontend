@@ -12,7 +12,7 @@
         </template>
       </div> -->
 
-      <EmployeesCarousel class="carousel" />
+      <EmployeesCarousel />
     </div>
 
     <div class="design">

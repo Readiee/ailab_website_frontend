@@ -5,6 +5,9 @@ export interface Project {
 	is_realized: boolean,
 	type: number, // 0 - photo, 1 - video
 	slug: string,
+
+	authors: Employee[],
+	instruction: string,
 }
 
 export interface Publication {

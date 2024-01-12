@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses" :disabled="loading">
+  <button :class="buttonClasses">
     <span v-if="!loading" class="flex items-center">
       <slot />
       <svg
@@ -120,11 +120,11 @@ const iconPath = computed(() => {
     }
 
     &:hover path {
-      transition: 0.2s ease-in-out;
+      transition: 0.15s ease-in-out;
       stroke: var(--purple);
     }
     &:not(hover) path {
-      transition: 0.2s ease-in-out;
+      transition: 0.15s ease-in-out;
       stroke: white;
     }
   }

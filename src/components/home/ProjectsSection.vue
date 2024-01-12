@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="section">
-      <SectionHeader title="Проекты" caption="Наши реализованные и текущие исследовательские проекты" />
+      <SectionHeader :title="props.title" caption="Наши реализованные и текущие исследовательские проекты" />
       <ProjectsTypeSwitch v-model="isRealizedSwitch" class="mb-8" />
 
       <!-- <ProjectsGrid :projects="projects" /> -->
       <div class="projects-list">
-        <template v-for="project in projects" :key="project">
-          <ProjectCard :project="project" />
+        <template v-for="(project, index) in projects" :key="index">
+          <ProjectCard v-if="project.slug != currentProjectSlug" :project="project" />
         </template>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <img class="light-1" src="@/assets/images/light-3.png" alt="design">
       <img class="light-2" src="@/assets/images/light-2.png" alt="design">
       <img class="light-3" src="@/assets/images/light-3.png" alt="design">
-      <img class="light-4" src="@/assets/images/light-2.png" alt="design">
+      <img v-if="projects.length < 30" class="light-4" src="@/assets/images/light-2.png" alt="design">
     </div>
   </div>
 </template>
@@ -26,9 +26,16 @@ import SectionHeader from '@/components/SectionHeader.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectsTypeSwitch from '@/components/ProjectsTypeSwitch.vue'
 import useProjects from '@/hooks/useProjects'
+import { useRoute } from 'vue-router'
 
 const { projects, isRealizedSwitch } = useProjects()
 
+const props = defineProps({
+	title: { type: String, default: 'Проекты'}
+})
+
+const route = useRoute()
+const currentProjectSlug = route.params.slug
 </script>
 
 <style scoped lang="scss">
@@ -74,7 +81,7 @@ const { projects, isRealizedSwitch } = useProjects()
 
     .light-4 {
       width: 440px;
-      top: 98rem;
+      bottom: 0rem;
       left: -12rem;
     }
 }

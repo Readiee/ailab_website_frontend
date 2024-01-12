@@ -104,7 +104,7 @@ svg {
     align-items: flex-start;
     align-content: flex-start;
     row-gap: 16px;
-    column-gap: 40px;
+    column-gap: 52px;
     flex-wrap: wrap;
     @media screen and (max-width: 564px) {
       column-gap: 24px;

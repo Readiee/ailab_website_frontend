@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses" :disabled="loading">
+  <button :class="buttonClasses">
     <slot v-if="!loading" key="1" /> 
     <AppSpinner v-else key="2" />
   </button>
@@ -11,7 +11,7 @@ import AppSpinner from '@/components/UI/AppSpinner.vue'
 
 const props = defineProps({
 	size: { type: String, default: 'medium' },
-	type: { type: String, default: 'primary' },
+	kind: { type: String, default: 'primary' },
 	loading: { type: Boolean, default: false },
 	variant: { type: String, default: 'common' }, 
 })
@@ -22,18 +22,19 @@ const buttonClasses = computed(() => {
 		'btn-small': props.size == 'small',
 		'btn-medium': props.size == 'medium',
 		'btn-large': props.size == 'large',
-		'btn-primary': props.type == 'primary',
-		'btn-secondary': props.type == 'secondary',
+		'btn-primary': props.kind == 'primary',
+		'btn-secondary': props.kind == 'secondary',
 		'btn-plain': props.variant == 'plain',
-		'disabled': props.loading == true
+		'disabled': props.loading == true 
 	}
 })
 </script>
   
-<style scoped lang="scss">
+<style lang="scss">
   
   .btn {
     width: fit-content;
+    min-width: 112px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,6 +79,7 @@ const buttonClasses = computed(() => {
 
     &:hover {
       box-shadow: 0px 0px 16px 0px #6F00FB;
+      color: white
     }
   }
   

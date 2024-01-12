@@ -9,7 +9,7 @@
         <a @click="scrollToPublication()">Публикации</a>
         <a @click="scrollToteam()">Команда</a>
       </ul>
-      <AppBtn size="small" type="secondary" @click="scrollToContactUs()">Связь с нами</AppBtn>
+      <AppBtn size="small" kind="secondary" @click="scrollToContactUs()">Связь с нами</AppBtn>
     </div>
 
 

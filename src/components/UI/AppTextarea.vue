@@ -19,7 +19,7 @@ textarea {
   color: white;
   border-radius: 4px;
   background-color: var(--dark);
-  transition: 0.2s ease-in-out;
+  transition: 0.15s ease-in-out;
 
   &::placeholder {
     color: var(--dark-grey);

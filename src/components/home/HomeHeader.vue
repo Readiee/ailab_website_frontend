@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt-4">
     <div class="wrapper">
       <h1>
         <span class="plain">Лаборатория</span>

@@ -1,29 +1,31 @@
 <template>
-  <swiper
-    ref="{swiperRef}"
-    :slides-per-view="3"
-    :centered-slides="false"
-    :space-between="20"
-    :navigation="true"
-    :modules="modules"
-    :breakpoints="{
-      '640': {
-        slidesPerView: 2,
-      },
-      '1200': {
-        slidesPerView: 3,
-      },
-    }"
-  >
-    <swiper-slide v-for="employee in employees" :key="employee.link">
-      <EmployeeCard :employee="employee" />
-    </swiper-slide>
-  </swiper>
+  <div class="carousel">
+    <swiper
+      ref="{swiperRef}"
+      :slides-per-view="3"
+      :centered-slides="false"
+      :space-between="20"
+      :navigation="true"
+      :modules="modules"
+      :breakpoints="{
+        '640': {
+          slidesPerView: 2,
+        },
+        '1200': {
+          slidesPerView: 3,
+        },
+      }"
+    >
+      <swiper-slide v-for="employee in employees" :key="employee.link">
+        <EmployeeCard :employee="employee" />
+      </swiper-slide>
+    </swiper>
 
-  <div id="mobile-carousel">
-    <template v-for="employee in employees" :key="employee.link">
-      <EmployeeCard :employee="employee" />
-    </template>
+    <div id="mobile-carousel">
+      <template v-for="employee in employees" :key="employee.link">
+        <EmployeeCard :employee="employee" />
+      </template>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -44,7 +46,7 @@ const { employees } = useEmployees()
 
 </script>
 
-<style>
+<style lang="scss">
 
 /* Swiper */
 .swiper {
@@ -97,13 +99,12 @@ const { employees } = useEmployees()
 }
 
 #mobile-carousel {
-		width: 100vw;
+		width: 100%;
 		display: none;
 		flex-wrap: nowrap;
-		overflow: hidden;
 		gap: 24px;
 		overflow-x: auto;
-		padding: 0 28px;
+		padding: 0 24px;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -117,6 +118,10 @@ const { employees } = useEmployees()
 
 	#mobile-carousel {
 		display: flex;
+	}
+
+	.carousel {
+		width: 100vw !important;
 	}
 }
 

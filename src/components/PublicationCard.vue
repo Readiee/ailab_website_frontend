@@ -1,5 +1,5 @@
 <template>
-  <a :href="props.publication.link" class="publication-item">
+  <a :href="props.publication.link" class="publication-item gradient-hover">
     <div class="start">
       <h3>{{ props.number }}</h3>
     </div>
@@ -69,41 +69,22 @@ const props = defineProps({
 
   &:hover path {
     fill: var(--purple);
-    transition: 0.2s;
+    transition: 0.15s;
   }
 
   &:hover circle {
     stroke: var(--purple);
-    transition: 0.2s;
+    transition: 0.15s;
   }
 
   &:not(hover) path {
     fill: white;
-    transition: 0.2s;
+    transition: 0.15s;
   }
 
   &:not(hover) circle {
     stroke: white;
-    transition: 0.2s;
-  }
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgb(172,80,242);
-    background: linear-gradient(270deg, #281c42 1.97%, rgba(54, 22, 121, 0) 108.44%);
-    transition: opacity 0.2s linear;
-    z-index: -1;
-    opacity: 0;
-
-    border-radius: 8px;
-  }
-    &:hover::before {
-    opacity: 1;
+    transition: 0.15s;
   }
 }
 

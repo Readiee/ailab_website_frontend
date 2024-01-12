@@ -13,7 +13,7 @@ input {
   border-bottom: 2px solid var(--ghost-grey);
   background-color: transparent;
   color: white;
-  transition: 0.2s ease-in-out;
+  transition: 0.15s ease-in-out;
 
   &::placeholder {
     color: var(--dark-grey);

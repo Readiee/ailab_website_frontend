@@ -116,6 +116,7 @@ const routeToProject = () => {
       justify-content: space-between;
       align-items: center;
       margin-top: auto;
+      padding-top: 12px;
       h4 {
         text-transform: uppercase;
         // color: var(--purple)

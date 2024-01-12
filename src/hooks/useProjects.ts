@@ -11,7 +11,6 @@ export default function useProjects() {
 		try {
 			const response = await getProjects()
 			data.value = response.data
-			console.log(data.value)
 		} catch (err) {
 			console.log(err)
 		}

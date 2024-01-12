@@ -1,6 +1,8 @@
 <template>
-  <input id="menu" v-model="isMenuOpen" type="checkbox" style="display: none;">
-  <label for="menu" :class="buttonClasses" />
+  <div class="menu-burger">
+    <input id="menu" v-model="isMenuOpen" type="checkbox" style="display: none;">
+    <label for="menu" :class="buttonClasses" />
+  </div>
 </template>
 
 <script setup lang="ts">

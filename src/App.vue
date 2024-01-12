@@ -14,7 +14,7 @@ import AppFooter from '@/components/AppFooter.vue'
 <style scoped lang="scss">
 .main {
   min-height: 100%;
-  padding-top: 110px;
+  padding-top: 100px;
 	flex: 1 0 auto;
 
   display: flex;
