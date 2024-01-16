@@ -12,4 +12,9 @@ const router = createRouter({
 	routes
 })
 
+const WEBSITE_TITLE = 'НУЛ СИИ ИКИТ'
+router.afterEach((to, from) => {
+	document.title = to.meta.title + ' — ' + WEBSITE_TITLE
+})
+
 export default router

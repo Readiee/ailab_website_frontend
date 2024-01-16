@@ -7,7 +7,7 @@
       @dragleave="dragleave"
       @drop="drop"
     >
-      <div v-if="fileIsLoaded" class="rounded-md m-auto absolute top-0 right-0 left-0 bottom-0" :src="previewImageSrc" alt="bgr" :style="backgroundStyle" />
+      <div v-if="fileIsLoaded" class="rounded-md m-auto absolute top-0 right-0 left-0 bottom-0" alt="bgr" :style="backgroundStyle" />
       <div class="content top-0 left-0 right-0 bottom-0 absolute flex justify-center items-center flex-col gap-2">
         <input
           id="fileInput"
@@ -21,7 +21,15 @@
 
         <label v-if="files.length == 0" for="fileInput" class="file-label">
           <div v-if="isDragging">+</div>
-          <div v-else class="text-center">Перетащите файл в это поле <br> или <span class="primary cursor-pointer">нажмите сюда</span>.</div>
+          <div v-else class="text-center">
+            Перетащите файл в это поле <br> или <span class="primary cursor-pointer">нажмите сюда</span>.
+            <br><br>
+            <p>Файл должен быть не больше <strong>{{ fileLimit }} Мб</strong></p>
+            <div v-if="showError" class="error">
+              <br><br>
+              Файл слишком большой.
+            </div>
+          </div>
         </label>
 
         <div v-show="fileIsLoaded && !isShownProccessedImage" class="file-loaded-view w-full h-full flex p-4">
@@ -82,6 +90,12 @@
   </form>
 
   <a id="download-link" href="" />
+
+  <!-- <transition name="fade">
+    <AppSnackbar v-if="showError">
+      Файл слишком большой.
+    </AppSnackbar>
+  </transition> -->
 </template>
 
 <script setup lang="ts">
@@ -89,6 +103,7 @@ import { ref, computed, onMounted } from 'vue'
 import AppBtn from '@/components/UI/AppBtn.vue'
 import useFileSize from '@/hooks/useFileSize'
 import AppIconBtn from '@/components/UI/AppIconBtn.vue'
+import AppSnackbar from '@/components/UI/AppSnackbar.vue'
 
 const isDragging = ref(false)
 const files = ref<File[]>([])
@@ -113,20 +128,36 @@ const fileSize = computed(() => {
 	return useFileSize(files.value[0].size)
 })
 
+// file limit (MB)
+const fileLimit = 3 
+
 const onChange = () => {
 	fileIsProcessed.value = false
 	isShownProccessedImage.value = false
 	proccesedImageUrl.value = ''
+	// if (file.value) {
+	// 	file.value.files = null
+	// }
+	files.value = []
 
-	if (file.value instanceof HTMLInputElement && file.value.files) {
+	if (file.value instanceof HTMLInputElement && file.value.files && file.value.files[0].size < 1048576 * fileLimit) {
 		// files.value.push(...Array.from(file.value.files))
 		files.value = Array.from(file.value.files)
+		previewImageSrc.value = URL.createObjectURL(files.value[0])
+		showError.value = false
+	} else {
+		showError.value = true
+		// setTimeout(() => {
+		// 	showError.value = false
+		// }, 5000)
+
+		if (file.value) {
+			file.value.value = ''
+		}
 	}
-
-	//image preview
-	previewImageSrc.value = URL.createObjectURL(files.value[0])
-
 }
+
+const showError = ref(false)
 
 const dragover = (e:Event) => {
 	e.preventDefault()
@@ -184,7 +215,6 @@ onMounted(() => {
 				}  
 			}
 		}
-		alert(mutationsList.length)
 	})
 	if (processedImage) {
 		imgObserver.observe(processedImage, {

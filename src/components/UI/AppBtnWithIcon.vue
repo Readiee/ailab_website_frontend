@@ -15,6 +15,28 @@
           <path class="btn-icon" d="M9 5L15.9632 11.9632L9 18.9263" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
         </g>
       </svg>
+
+      <svg
+        v-if="$props.icon == 'play-circle'"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        style="margin-left: 10px;"
+      ><path class="btn-icon" fill="white" d="m12,0C5.383,0,0,5.383,0,12s5.383,12,12,12,12-5.383,12-12S18.617,0,12,0Zm0,21c-4.963,0-9-4.038-9-9S7.037,3,12,3s9,4.038,9,9-4.037,9-9,9Zm-3-13.5l8,4.5-8,4.5V7.5Z" /></svg>
+
+      <svg
+        v-if="$props.icon == 'stop-circle'"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        style="margin-left: 10px;"
+      ><path stroke="none" fill="white" d="m12,0C5.383,0,0,5.383,0,12s5.383,12,12,12,12-5.383,12-12S18.617,0,12,0Zm0,21c-4.962,0-9-4.038-9-9S7.038,3,12,3s9,4.038,9,9-4.038,9-9,9Zm-4-13h8v8h-8v-8Z" /></svg>
     </span>
     <!-- <AppSpinner v-if="loading" /> -->
   </button>
@@ -49,6 +71,7 @@ const iconPath = computed(() => {
 </script>
   
 <style scoped lang="scss">
+
   
   .btn {
     width: fit-content;

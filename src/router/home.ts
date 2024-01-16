@@ -4,6 +4,7 @@ export default [
 	{
 		path: '/',
 		name: 'home',
-		component: HomeView
+		component: HomeView,
+		meta: { title: 'Главная' }
 	},
 ]

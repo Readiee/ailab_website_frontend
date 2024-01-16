@@ -27,6 +27,7 @@ import ProjectCard from '@/components/ProjectCard.vue'
 import ProjectsTypeSwitch from '@/components/ProjectsTypeSwitch.vue'
 import useProjects from '@/hooks/useProjects'
 import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
 
 const { projects, isRealizedSwitch } = useProjects()
 
@@ -35,7 +36,11 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const currentProjectSlug = route.params.slug
+const currentProjectSlug = ref(String(route.params.slug))
+
+watch(() => route.params.slug, newVal => {
+	currentProjectSlug.value = String(newVal)
+})
 </script>
 
 <style scoped lang="scss">

@@ -1,7 +1,8 @@
 <template>
   <div class="container flex gap-6">
     <div class="content__left w-full">
-      <DropfileBox />
+      <DropfileBox v-if="project?.type == 0" />
+      <WebCamBox v-if="project?.type == 1" />
     
       <div class="project__main mt-8 mb-4">
         <span class="color-caption text-sm">Проект</span>
@@ -42,17 +43,25 @@ import { useRoute } from 'vue-router'
 import useProject from '@/hooks/useProject'
 import UserGroup from '@/components/UserGroup.vue'
 import DropfileBox from '@/components/DropfileBox.vue'
+import WebCamBox from '@/components/WebCamBox.vue'
 import AppAccordion from '@/components/UI/AppAccordion.vue'
 import ProjectsSection from '@/components/home/ProjectsSection.vue'
 import ProjectGroup from '@/components/ProjectGroup.vue'
-import useProjects from '@/hooks/useProjects'
-
+import { onMounted, ref, watch } from 'vue'
 
 const route = useRoute()
-const slug = String(route.params.slug)
-const { project } = useProject(slug)
+const { project, slug } = useProject()
 
-const { projects } = useProjects()
+watch(() => route.params.slug, (newVal) => {
+	slug.value = String(newVal)
+})
+
+watch(project, newValue => {
+	if (newValue?.title) {
+		document.title = newValue.title + ' — ' + 'НУЛ СИИ ИКИТ'
+	}
+})
+
 </script>
 
 <style scoped>

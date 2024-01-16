@@ -103,7 +103,7 @@ const scrollToContactUs = () => {
       left: 0;
       top: 64px;
       bottom: 0;
-      z-index: 10;
+      z-index: 100;
       display: flex;
       justify-content: center;
 

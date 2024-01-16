@@ -1,12 +1,15 @@
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUpdate, onMounted, onUpdated, ref, watch } from 'vue'
 import { getProject } from '@/api/projects.api'
 import type { Project } from '@/api/types'
+import { useRoute } from 'vue-router'
 
-export default function useProject(slug:string) {
+export default function useProject() {
+	const route = useRoute()
+	const slug = ref(String(route.params.slug))
 	const data = ref<Project>()
 	const fetching = async () => {
 		try {
-			const response = await getProject(slug)
+			const response = await getProject(slug.value)
 			data.value = response.data
 			
 		} catch (err) {
@@ -20,7 +23,13 @@ export default function useProject(slug:string) {
 
 	onMounted(fetching)
 
+	watch(slug, newVal => {
+		console.log(newVal)
+		fetching()
+	})
+
 	return {
+		slug,
 		project
 	} 
 } 

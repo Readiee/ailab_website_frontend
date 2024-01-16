@@ -1,6 +1,6 @@
 <template>
   <div id="desktop-project-card" class="project-item">
-    <div class="start py-3">
+    <div class="start pt-3">
       <div class="start__top">
         <h3>{{ props.project.title }}</h3>
         <p class="mt-3">{{ props.project.description }}</p>
@@ -116,7 +116,7 @@ const routeToProject = () => {
       justify-content: space-between;
       align-items: center;
       margin-top: auto;
-      padding-top: 12px;
+      padding-top: 16px;
       h4 {
         text-transform: uppercase;
         // color: var(--purple)
