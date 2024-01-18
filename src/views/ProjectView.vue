@@ -2,7 +2,7 @@
   <div class="container flex gap-6">
     <div class="content__left w-full">
       <template v-if="project?.is_realized">
-        <template v-if="!fetchScriptError || true"> 
+        <template v-if="!fetchScriptError"> 
           <DropfileBox v-if="project?.type == 0" />
           <WebCamBox v-if="project?.type == 1" />
         </template>
