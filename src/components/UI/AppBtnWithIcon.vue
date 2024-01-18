@@ -51,6 +51,7 @@ const props = defineProps({
 	loading: { type: Boolean, default: false },
 	icon: { type: String, default: 'forward' }, 
 	variant: { type: String, default: 'common' }, 
+	hover: { type: Boolean, default: true }, 
 })
   
 const buttonClasses = computed(() => {
@@ -62,6 +63,8 @@ const buttonClasses = computed(() => {
 		'btn-primary': props.type == 'primary',
 		'btn-secondary': props.type == 'secondary',
 		'btn-plain': props.variant == 'plain',
+		'btn-red': props.variant == 'red',
+		'no-hover': props.hover == false
 	}
 })
 
@@ -112,12 +115,18 @@ const iconPath = computed(() => {
   
   .btn-primary {
     background: var(--primary);
-    img {
-      border: 2px solid red;
-    }
 
     &:hover {
       box-shadow: 0px 0px 16px 0px #6F00FB;
+    }
+  }
+
+  .btn-red {
+    background: red;
+    box-shadow: 0px 0px 4px 0px red;
+
+    &:hover {
+      box-shadow: 0px 0px 12px 0px red;
     }
   }
   
@@ -165,6 +174,10 @@ const iconPath = computed(() => {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .no-hover {
+    pointer-events: none;
   }
   </style>
   

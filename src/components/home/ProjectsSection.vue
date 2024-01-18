@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="projects-section" class="container">
     <div class="section">
       <SectionHeader :title="props.title" caption="Наши реализованные и текущие исследовательские проекты" />
       <ProjectsTypeSwitch v-model="isRealizedSwitch" class="mb-8" />

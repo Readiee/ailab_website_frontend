@@ -12,7 +12,10 @@
       </div>
     </div>
     <div class="end">
-      <div class="img-container">
+      <div class="img-container cursor-pointer relative" @click="routeToProject()">
+        <div class="img-btn absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center">
+          <AppBtnWithIcon :hover="false" class="img-btn" variant="plain">Перейти к проекту</AppBtnWithIcon>
+        </div>
         <img :src="props.project.photo" alt="image">
       </div>
     </div>
@@ -42,6 +45,8 @@
 import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import type { Project } from '@/api/types'
 import { useRouter } from 'vue-router'
+import AppIconBtn from '@/components/UI/AppIconBtn.vue'
+import { ref } from 'vue'
 
 const props = defineProps({
 	project: { type: Object as () => Project, required: true }
@@ -55,12 +60,10 @@ const routeToProject = () => {
 		type = 'video'
 	}
 	const path = '/projects/' + type + '/' + props.project.slug
-
-	if (props.project.is_realized) {
-		router.push({ path: path })
-	}
+	router.replace({ path: path })
 }
 
+const showImgButton = ref(false)
 </script>
 
 <style scoped lang="scss">
@@ -137,9 +140,27 @@ const routeToProject = () => {
   position: relative;
   width: 100%;
   // max-width: 480px;
+
+  &:hover::before {
+    background-color: rgba(97, 0, 255, 0.16); 
+  }
+
+  &:hover .img-btn {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.15s ease-in-out;
+  }
+}
+
+.img-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0;
 }
 
 .img-container::before {
+  transition: 0.15s ease-in-out;
+
   content: '';
   position: absolute;
   top: 0;

@@ -20,14 +20,19 @@
         >
 
         <label v-if="files.length == 0" for="fileInput" class="file-label">
-          <div v-if="isDragging">+</div>
+          <div v-if="isDragging">Перетащите файл в это поле</div>
           <div v-else class="text-center">
             Перетащите файл в это поле <br> или <span class="primary cursor-pointer">нажмите сюда</span>.
             <br><br>
             <p>Файл должен быть не больше <strong>{{ fileLimit }} Мб</strong></p>
-            <div v-if="showError" class="error">
+            <div v-if="showSizeError" class="error">
               <br><br>
               Файл слишком большой.
+            </div>
+
+            <div v-if="showTypeError" class="error">
+              <br><br>
+              Данный формат файлов не поддерживается.
             </div>
           </div>
         </label>
@@ -103,7 +108,7 @@ import { ref, computed, onMounted } from 'vue'
 import AppBtn from '@/components/UI/AppBtn.vue'
 import useFileSize from '@/hooks/useFileSize'
 import AppIconBtn from '@/components/UI/AppIconBtn.vue'
-import AppSnackbar from '@/components/UI/AppSnackbar.vue'
+import useFileFormat from '../hooks/useFileFormat'
 
 const isDragging = ref(false)
 const files = ref<File[]>([])
@@ -140,24 +145,35 @@ const onChange = () => {
 	// }
 	files.value = []
 
-	if (file.value instanceof HTMLInputElement && file.value.files && file.value.files[0].size < 1048576 * fileLimit) {
-		// files.value.push(...Array.from(file.value.files))
-		files.value = Array.from(file.value.files)
-		previewImageSrc.value = URL.createObjectURL(files.value[0])
-		showError.value = false
-	} else {
-		showError.value = true
-		// setTimeout(() => {
-		// 	showError.value = false
-		// }, 5000)
+	if(file.value instanceof HTMLInputElement && file.value.files) {
+		const fileFormat = useFileFormat(file.value.files[0].name)
 
-		if (file.value) {
-			file.value.value = ''
+		if(fileFormat != 'png' && fileFormat != 'jpg' && fileFormat != 'jpeg') {
+			showTypeError.value = true
+			if (file.value) {
+				file.value.value = ''
+			}
+			return false
 		}
-	}
+
+		else if(file.value.files[0].size > 1048576 * fileLimit) {
+			showSizeError.value = true
+			if (file.value) {
+				file.value.value = ''
+			}
+			return false
+		} else {
+			// files.value.push(...Array.from(file.value.files))
+			files.value = Array.from(file.value.files)
+			previewImageSrc.value = URL.createObjectURL(files.value[0])
+			showSizeError.value = false
+			showTypeError.value = false
+		}
+	} 
 }
 
-const showError = ref(false)
+const showSizeError = ref(false)
+const showTypeError = ref(false)
 
 const dragover = (e:Event) => {
 	e.preventDefault()
@@ -191,11 +207,11 @@ let processedImage: HTMLElement | null
 
 
 onMounted(() => {
-	// Подключение скрипта с обработкой
-	const script = document.createElement('script')
-	script.setAttribute('src', '/src/components/test_photo.js')
-	document.head.appendChild(script)
-  
+	// Подключение локального скрипта (для тестов)
+	// const script = document.createElement('script')
+	// script.src = '/src/components/test_photo.js'
+	// document.head.appendChild(script)
+
 	// Отслеживание изменения src у изображения
 	processedImage = document.getElementById('processed-image')
 	let prevSrc = ''
@@ -222,9 +238,6 @@ onMounted(() => {
 		})
 	}
 })
-
-
-
 </script>
 
 <style scoped lang="scss">

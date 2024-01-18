@@ -8,7 +8,7 @@
         <span class="plain">ИКИТ СФУ</span>
       </h1>
       <p class="my-6">Добро пожаловать в лабораторию искусственного интеллекта, где мы преображаем фантазии в инновации!</p>
-      <AppBtnWithIcon class="mt-2" icon="forward" @click="router.push({ name: 'projects' })">К проектам</AppBtnWithIcon>
+      <AppBtnWithIcon class="mt-2" icon="forward" @click="scrollTo('projects-section')">К проектам</AppBtnWithIcon>
     </div>
 
     
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import { useRouter } from 'vue-router'
-
+import scrollTo from '@/hooks/scrollTo'
 const router = useRouter()
 </script>
 

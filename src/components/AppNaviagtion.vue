@@ -2,7 +2,7 @@
   <nav>
     <!-- Desktop -->
     <div id="desktop_nav" class="container gap-1">
-      <RouterLink to="/"><img class="logo" src="@/assets/logo.svg"></RouterLink>
+      <RouterLink to="/"><img class="logo" src="@/assets/logo.svg" @click="scrollToHeader"></RouterLink>
       <ul>
         <a @click="scrollToHeader()">Главная</a>
         <a @click="scrollToProjects()">Проекты</a>
@@ -59,37 +59,57 @@
 import AppBtn from '@/components/UI/AppBtn.vue'
 import MenuBurger from '@/components/UI/MenuBurger.vue'
 import { ref } from 'vue'
+import scrollTo from '@/hooks/scrollTo'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const isMenuOpen = ref(false)
 // const toggleMenu = () => {
 // 	isMenuOpen.value = !isMenuOpen.value
 // }
 const scrollToHeader = () => {
+	router.push({ name: 'home'}).then(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth'})
+	})
 	isMenuOpen.value = false
-	console.log('scroll')
 }
 
+const scrollDelay = 100
+
 const scrollToProjects = () => {
+	router.push({ name: 'home'}).then(() => {
+		setTimeout(() => {
+			scrollTo('projects-section')
+		}, scrollDelay)
+	})	
 	isMenuOpen.value = false
-	console.log('scroll')
-  
 }
 
 const scrollToPublication = () => {
+	router.push({ name: 'home'}).then(() => {
+		setTimeout(() => {
+			scrollTo('publications-section')
+		}, scrollDelay)
+	})	
 	isMenuOpen.value = false
-	console.log('scroll')
-  
 }
 
 const scrollToteam = () => {
+	router.push({ name: 'home'}).then(() => {
+		setTimeout(() => {
+			scrollTo('team-section')
+		}, scrollDelay)
+	})	
 	isMenuOpen.value = false
-	console.log('scroll')
-  
 }
 
 const scrollToContactUs = () => {
+	router.push({ name: 'home'}).then(() => {
+		setTimeout(() => {
+			scrollTo('contacts-section')
+		}, scrollDelay)
+	})
 	isMenuOpen.value = false
-	console.log('scroll')
 }
 
 </script>

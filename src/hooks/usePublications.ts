@@ -9,7 +9,6 @@ export default function usePublications() {
 		try {
 			const response = await getPublications()
 			publications.value = response.data
-			console.log(publications.value)
 		} catch (err) {
 			console.log(err)
 		}

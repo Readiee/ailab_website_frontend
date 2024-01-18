@@ -124,12 +124,9 @@ onMounted(() => {
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
 			if (mutation.type === 'attributes') {
-				console.log('attributes changed')
 				mutation.target.textContent = 'Attribute of the element changed'
 				fileIsProcessed.value = true
 			}
-    
-			console.log(mutation.target)
 		})
 	})
 

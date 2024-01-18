@@ -96,7 +96,7 @@ function negotiate() {
 }
 
 function start() {
-	document.getElementById('start').style.display = 'none'
+	// document.getElementById('start').style.display = 'none'
 
 	pc = createPeerConnection()
 
@@ -147,7 +147,7 @@ function stop() {
 		pc.close()
 	}, 500)
 
-	document.getElementById('start').style.display = 'inline-block'
+	// document.getElementById('start').style.display = 'inline-block'
 }
 
 function sdpFilterCodec(kind, codec, realSdp) {

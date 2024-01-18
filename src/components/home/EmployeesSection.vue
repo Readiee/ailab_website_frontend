@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="team-section" class="container">
     <div class="section">
       <SectionHeader
         title="Команда"

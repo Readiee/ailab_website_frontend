@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="publications-section" class="container">
     <div class="section">
       <SectionHeader title="Публикации" caption="Научные статьи и исследования, проведенные в нашей лаборатории" />
 

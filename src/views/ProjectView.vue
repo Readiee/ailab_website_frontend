@@ -1,12 +1,63 @@
 <template>
   <div class="container flex gap-6">
     <div class="content__left w-full">
-      <DropfileBox v-if="project?.type == 0" />
-      <WebCamBox v-if="project?.type == 1" />
-    
+      <template v-if="project?.is_realized">
+        <template v-if="!fetchScriptError || true"> 
+          <DropfileBox v-if="project?.type == 0" />
+          <WebCamBox v-if="project?.type == 1" />
+        </template>
+        <div v-if="fetchScriptError" class="base-box px-4 py-8 text-center error">
+          По техническим причинам пока невозможно опробовать фунционал данного проекта.
+        </div>
+      </template>
+
+      <template v-else>
+        <div v-if="fetchScriptError" class="base-box px-4 py-8 text-center">
+          Данный проект еще разрабатывается.
+        </div>
+      </template>
+      
+      <!-- WebCam elements for script -->
+      <div class="hidden">
+        <div class="option">
+          <select id="video-codec">
+            <option value="default" selected>Default codecs</option>
+            <option value="VP8/90000">VP8</option>
+            <option value="H264/90000">H264</option>
+          </select>
+        </div>
+
+        <div class="option">
+          <input id="use-stun" type="checkbox">
+          <label for="use-stun">Use STUN server</label>
+        </div>
+
+        <h2>State</h2>
+        <p>
+          ICE gathering state: <span id="ice-gathering-state" />
+        </p>
+        <p>
+          ICE connection state: <span id="ice-connection-state" />
+        </p>
+        <p>
+          Signaling state: <span id="signaling-state" />
+        </p>
+
+        <h2>Data channel</h2>
+        <pre id="data-channel" style="height: 200px;" />
+
+        <h2>SDP</h2>
+
+        <h3>Offer</h3>
+        <pre id="offer-sdp" />
+
+        <h3>Answer</h3>
+        <pre id="answer-sdp" />
+      </div>
+
       <div class="project__main mt-8 mb-4">
         <span class="color-caption text-sm">Проект</span>
-        <h3 class="my-2">{{ project?.title }}</h3>
+        <h3 class="my-2 uppercase">{{ project?.title }}</h3>
         <p>{{ project?.description }}</p>
       </div>
 
@@ -46,11 +97,10 @@ import DropfileBox from '@/components/DropfileBox.vue'
 import WebCamBox from '@/components/WebCamBox.vue'
 import AppAccordion from '@/components/UI/AppAccordion.vue'
 import ProjectsSection from '@/components/home/ProjectsSection.vue'
-import ProjectGroup from '@/components/ProjectGroup.vue'
 import { onMounted, ref, watch } from 'vue'
 
 const route = useRoute()
-const { project, slug } = useProject()
+const { project, slug, fetchScriptError } = useProject()
 
 watch(() => route.params.slug, (newVal) => {
 	slug.value = String(newVal)
@@ -61,7 +111,6 @@ watch(project, newValue => {
 		document.title = newValue.title + ' — ' + 'НУЛ СИИ ИКИТ'
 	}
 })
-
 </script>
 
 <style scoped>

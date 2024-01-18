@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="contacts-section" class="container">
     <div class="section">
       <SectionHeader title="Связь с нами" caption="Если у Вас есть вопросы, то Вы всегда можете написать нам!" />
       <form @submit.prevent="submitForm">

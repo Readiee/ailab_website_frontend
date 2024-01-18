@@ -1,64 +1,23 @@
 <template>
-  <div class="base-box relative flex justify-center items-center" style="padding-top: 57.25%; height: 0; background-color: rgba(0, 0, 0);">
-    <div class="hidden">
-      <div class="option">
-        <select id="video-codec">
-          <option value="default" selected>Default codecs</option>
-          <option value="VP8/90000">VP8</option>
-          <option value="H264/90000">H264</option>
-        </select>
-      </div>
-
-      <div class="option">
-        <input id="use-stun" type="checkbox">
-        <label for="use-stun">Use STUN server</label>
-      </div>
-
-      <h2>State</h2>
-      <p>
-        ICE gathering state: <span id="ice-gathering-state" />
-      </p>
-      <p>
-        ICE connection state: <span id="ice-connection-state" />
-      </p>
-      <p>
-        Signaling state: <span id="signaling-state" />
-      </p>
-
-      <h2>Data channel</h2>
-      <pre id="data-channel" style="height: 200px;" />
-
-      <h2>SDP</h2>
-
-      <h3>Offer</h3>
-      <pre id="offer-sdp" />
-
-      <h3>Answer</h3>
-      <pre id="answer-sdp" />
-    </div>
-
-    <div
-      class="start-button absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center z-20" 
-      @click="isStopButtonVisible = !isStopButtonVisible"
-      @mousemove="showHUD()"
-      @mouseleave="isStopButtonVisible = false"
-    >
+  <div
+    class="base-box relative flex justify-center items-center" 
+    :class="{'border-r-bottom-0': isStarted }" 
+    style="padding-top: 57.25%; height: 0; background-color: rgba(0, 0, 0);"
+  >
+    <div class="start-button absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center z-20">
       <AppSpinner v-if="loading" />
       <div v-else>
         <transition name="fade">
-          <AppBtnWithIcon v-if="!isStarted" id="start" class="btn-start" icon="play-circle" onclick="start()" @click="getStarted()">Начать</AppBtnWithIcon>
-        </transition>
-
-        <transition name="fade">
           <AppBtnWithIcon
-            v-if="isStarted && isStopButtonVisible"
-            id="stop"
-            icon="stop-circle"
-            class="btn-stop"
-            onclick="stop()"
-            @click="getStopped()"
+            v-if="!isStarted"
+            id="start"
+            :disabled="fetchScriptError != false"
+            class="btn-start"
+            icon="play-circle"
+            onclick="start()"
+            @click="getStarted()"
           >
-            Остановить
+            Начать
           </AppBtnWithIcon>
         </transition>
       </div>
@@ -69,6 +28,33 @@
       <video id="video" class="rounded-md" autoplay="true" playsinline="true" />
     </div>
   </div>
+
+  <div v-if="isStarted && loaded" class="actions flex items-center mb-6 p-4 base-box">
+    <div class="actions__start mr-auto overflow-hidden max-w-full">
+      <!-- <div v-if="loading" class="loading flex items-center gap-3">
+        <h5 class="overflow-hidden text-ellipsis">Подключение...</h5>
+      </div> -->
+      <div class="success flex items-center gap-2">
+        <img src="@/assets/icons/check-circle.svg" alt="ok">
+        <h5 class="overflow-hidden text-ellipsis">Соединение установлено</h5>
+      </div>
+    </div>
+        
+    <div class="actions__end flex items-center">
+      <div id="y-line-2" class="y-line mx-4" />
+      <AppBtnWithIcon
+        id="stop"
+        variant="primary"
+        icon="stop-circle"
+        class="btn-stop"
+        onclick="stop()"
+        size="small"
+        @click="getStopped()"
+      >
+        Остановить
+      </AppBtnWithIcon>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -76,13 +62,15 @@ import { onMounted, ref } from 'vue'
 import AppBtn from '@/components/UI/AppBtn.vue'
 import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import AppSpinner from '@/components/UI/AppSpinner.vue'
+import useProject from '@/hooks/useProject'
+import { onBeforeRouteLeave } from 'vue-router'
 
-onMounted(() => {
-	// Подключение скрипта с обработкой
-	const script = document.createElement('script')
-	script.setAttribute('src', '/src/components/dedsad.js')
-	document.head.appendChild(script)
-})
+// onMounted(() => {
+// 	// Подключение скрипта с обработкой
+// 	const script = document.createElement('script')
+// 	script.setAttribute('src', '/src/components/dedsad.js')
+// 	document.head.appendChild(script)
+// })
 const isStarted = ref(false)
 const loading = ref(false)
 const getStarted = () => {
@@ -91,21 +79,41 @@ const getStarted = () => {
 }
 const getStopped = () => {
 	isStarted.value = false
+	loading.value = false
+	loaded.value = false
 }
 const isStopButtonVisible = ref(false)
 
+let timeoutId: NodeJS.Timeout | undefined
+
 const showHUD = () => {
+	const show = () => {
+		timeoutId = setTimeout(() => { 
+			isStopButtonVisible.value = false
+		}, 3000 )
+	}
+
+	if (timeoutId !== null) {
+		clearTimeout(timeoutId)
+	}
+
 	isStopButtonVisible.value = true
-	setTimeout(() => { isStopButtonVisible.value = false}, 3000)
+	show()
 }
 
+const { fetchScriptError } = useProject()
+
+const loaded = ref(false)
 
 onMounted(() => {
+	loading.value = false
+	loaded.value = false
+  
 	const targetNode = document.getElementById('answer-sdp')
 	const mutate = (mutations:MutationRecord[]) => {
 		mutations.forEach((mutation) => {
-			console.log(mutation)
 			loading.value = false
+			loaded.value = true
 		})
 	}
 
@@ -120,11 +128,13 @@ onMounted(() => {
 	if(targetNode) {
 		observer.observe(targetNode, config)
 	}
+})
 
-	if(targetNode) {
-		setTimeout(() => {
-			targetNode.textContent = 'hello world'
-		}, 1000)	}
+
+onBeforeRouteLeave((to, from) => {
+	if(isStarted.value == true) {
+		window.stop()
+	}
 })
 </script>
 
@@ -154,5 +164,15 @@ onMounted(() => {
 
 video {
   max-height: 90%;
+}
+
+.actions {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.border-r-bottom-0 {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 </style>

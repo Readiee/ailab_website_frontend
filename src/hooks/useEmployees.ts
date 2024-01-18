@@ -9,7 +9,6 @@ export default function useemployees() {
 		try {
 			const response = await getEmployees()
 			employees.value = response.data
-			console.log(employees.value)
 		} catch (err) {
 			console.log(err)
 		}
