@@ -16,7 +16,7 @@
         <div class="img-btn absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center">
           <AppBtnWithIcon :hover="false" class="img-btn" variant="plain">Перейти к проекту</AppBtnWithIcon>
         </div>
-        <img :src="props.project.photo" alt="image">
+        <img class="aspect-[16/9]" :src="props.project.photo" alt="image">
       </div>
     </div>
   </div>
@@ -24,11 +24,11 @@
   <div id="mobile-project-card" class="project-item" @click="routeToProject()">
     <div class="start py-1">
       <div class="img-container">
-        <img :src="props.project.photo" alt="image">
+        <img class="aspect-[16/9]" :src="props.project.photo" alt="image">
       </div>
     </div>
     <div class="end">
-      <div class="end__top mb-2">
+      <div class="end__top mb-4">
         <h3>{{ props.project.title }}</h3>
         <p class="mt-2">{{ props.project.description }}</p>
       </div>
@@ -45,8 +45,6 @@
 import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import type { Project } from '@/api/types'
 import { useRouter } from 'vue-router'
-import AppIconBtn from '@/components/UI/AppIconBtn.vue'
-import { ref } from 'vue'
 
 const props = defineProps({
 	project: { type: Object as () => Project, required: true }
@@ -63,7 +61,6 @@ const routeToProject = () => {
 	router.replace({ path: path })
 }
 
-const showImgButton = ref(false)
 </script>
 
 <style scoped lang="scss">
@@ -209,14 +206,14 @@ const showImgButton = ref(false)
         -webkit-line-clamp: 4; 
       }
       P {
-        font-size: 14px;
+        // font-size: 14px;
         line-height: normal;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis; 
 
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
       }
     }
 

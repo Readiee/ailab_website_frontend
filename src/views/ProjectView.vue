@@ -2,11 +2,11 @@
   <div class="container flex gap-6">
     <div class="content__left w-full">
       <template v-if="project?.is_realized">
-        <template v-if="!fetchScriptError"> 
+        <template v-if="!fetchScriptError || true"> 
           <DropfileBox v-if="project?.type == 0" />
           <WebCamBox v-if="project?.type == 1" />
         </template>
-        <div v-if="fetchScriptError" class="base-box px-4 py-8 text-center error">
+        <div v-if="fetchScriptError" class="base-box px-4 py-8 text-center error mt-4">
           По техническим причинам пока невозможно опробовать фунционал данного проекта.
         </div>
       </template>
@@ -97,7 +97,7 @@ import DropfileBox from '@/components/DropfileBox.vue'
 import WebCamBox from '@/components/WebCamBox.vue'
 import AppAccordion from '@/components/UI/AppAccordion.vue'
 import ProjectsSection from '@/components/home/ProjectsSection.vue'
-import { onMounted, ref, watch } from 'vue'
+import { watch } from 'vue'
 
 const route = useRoute()
 const { project, slug, fetchScriptError } = useProject()

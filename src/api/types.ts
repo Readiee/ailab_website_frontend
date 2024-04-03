@@ -31,3 +31,12 @@ export interface Contact {
 	email: string,
 	question: string,
 }
+
+export interface New {
+	id: number,
+	photo: string,
+	title: string,
+	text: string,
+	desc: string,
+	date: Date,
+}

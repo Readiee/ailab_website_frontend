@@ -119,12 +119,12 @@ h5 {
 p {
   font-family: 'JuraMedium', sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.2rem;
+  font-size: 18px;
+  line-height: 1.4rem;
 
   @media screen and (max-width: 510px) {
-    font-size: 14px;
-    line-height: 1rem;
+    font-size: 16px;
+    line-height: normal;
   }
 }
 

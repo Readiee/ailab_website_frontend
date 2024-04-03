@@ -208,9 +208,9 @@ let processedImage: HTMLElement | null
 
 onMounted(() => {
 	// Подключение локального скрипта (для тестов)
-	// const script = document.createElement('script')
-	// script.src = '/src/components/test_photo.js'
-	// document.head.appendChild(script)
+	const script = document.createElement('script')
+	script.src = '/src/components/test_photo.js'
+	document.head.appendChild(script)
 
 	// Отслеживание изменения src у изображения
 	processedImage = document.getElementById('processed-image')

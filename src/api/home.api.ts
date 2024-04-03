@@ -13,6 +13,10 @@ export async function getEmployees() {
 	return mainApi.get('/get-employees/')
 }
 
+export async function getNews() {
+	return mainApi.get('/get-news/')
+}
+
 export async function createContact( contact:Contact ) {
 	return mainApi.post('/create-contact/', contact)
 }
