@@ -14,7 +14,7 @@
       <div class="end__bottom mt-auto">
         <AppBtnWithIcon size="medium" variant="plain" @click="routeToNew()">Читать статью</AppBtnWithIcon>
         <!-- <p class="text-base font-semibold">{{ formatDate(props.new.date) }}</p> -->
-        <p class="text-base font-semibold">22 февраля, 2023</p>
+        <p class="text-base font-semibold">{{ formatDate(props.new.date) }}</p>
       </div>
     </div>
   </div>
