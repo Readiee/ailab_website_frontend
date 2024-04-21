@@ -2,7 +2,7 @@
   <div class="container flex gap-6">
     <div class="content__left w-full">
       <template v-if="project?.is_realized">
-        <template v-if="!fetchScriptError || true"> 
+        <template v-if="!fetchScriptError"> 
           <DropfileBox v-if="project?.type == 0" />
           <WebCamBox v-if="project?.type == 1" />
         </template>
@@ -63,7 +63,7 @@
 
       <div class="project__authors mt-8 mb-10">
         <span class="color-caption text-sm">Авторы</span>
-        <div class="authors-list flex gap-8 mt-4">
+        <div class="authors-list flex flex-wrap gap-8 mt-4">
           <template v-for="author in project?.authors" :key="author.link">
             <UserGroup :img="author.photo" :title="author.first_name + ' ' + author.last_name" caption="ИКИТ СФУ" />
           </template>
@@ -73,6 +73,7 @@
       <div class="project__instruction">
         <AppAccordion title="Инструкция" :content="project?.instruction">
           <div v-html="project?.instruction" />
+          <!-- <p>{{ project?.instruction }}</p> -->
         </AppAccordion>
       </div>
     </div>

@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
 import type { Article } from '@/api/types'
 import { useRouter } from 'vue-router'
 import formatStringDate from '@/hooks/useDateFormat'
@@ -76,7 +75,7 @@ const routeToArticle = () => {
 
 #article-card {
   width: 100%;
-  max-width: 560px;
+  max-width: 620px;
   flex-direction: column;
   display: flex;
   flex-grow: 1;

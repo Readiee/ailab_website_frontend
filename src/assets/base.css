@@ -22,15 +22,17 @@
  	background: var(--accent-reverse);
  	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	color: var(--purple);
 	font-weight: 700;
+}
+
+.accent-reverse::selection {
+   -webkit-text-fill-color: white;
 }
 
 .primary {
 	background: var(--primary);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	color: var(--purple);
 	font-weight: 700;
 }
 
