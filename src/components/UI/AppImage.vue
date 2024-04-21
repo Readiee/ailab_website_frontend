@@ -40,6 +40,7 @@ const props = defineProps({
 
 .img-container img {
   width: 100%;
+  height: 100%;
   display: block;
   border-radius: 6px;
 } 

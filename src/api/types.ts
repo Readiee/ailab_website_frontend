@@ -32,11 +32,11 @@ export interface Contact {
 	question: string,
 }
 
-export interface New {
-	id: number,
+export interface Article {
+	slug: string,
 	photo: string,
 	title: string,
 	text: string,
 	desc: string,
-	date: Date,
+	date: string,
 }

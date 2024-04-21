@@ -2,9 +2,9 @@
   --primary: linear-gradient(90deg, #5C24FF 0%, #834FD9 47.81%, #7C35F0 100%);
   --dark: #070015;
   --purple: #7C35F0;
-  --grey: #8E8E8E;
-  --ghost-grey: #1F172E;
-  --dark-grey: #5B5666;
+  --grey: #a5a5a5;
+  --ghost-grey: #2e2341;
+  --dark-grey: #736f7d;
   --accent: linear-gradient(220deg, #FF3BFF 10%, #5C24FF 50%, #ECBFBF 80%, #D94FD5 100%);
   --accent-reverse: linear-gradient(70deg, #FF3BFF 5%, #5C24FF 60%, #ECBFBF 80%, #D94FD5 100%);
   --bgr-hover: linear-gradient(270deg, #231A36 1.97%, rgba(61, 31, 124, 0.00) 108.44%);

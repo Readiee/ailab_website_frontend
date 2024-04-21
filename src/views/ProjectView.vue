@@ -7,7 +7,7 @@
           <WebCamBox v-if="project?.type == 1" />
         </template>
         <div v-if="fetchScriptError" class="base-box px-4 py-8 text-center error mt-4">
-          По техническим причинам пока невозможно опробовать фунционал данного проекта.
+          По техническим причинам пока невозможно опробовать функционал данного проекта.
         </div>
       </template>
 

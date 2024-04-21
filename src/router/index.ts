@@ -2,14 +2,14 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import homeRoutes from '@/router/home'
 import projectsRoutes from '@/router/projects'
 import errorRoutes from '@/router/errors'
-import newRoutes from '@/router/news'
+import articleRoutes from '@/router/articles'
 
 
 const routes: RouteRecordRaw[] = [
 	...homeRoutes,
 	...projectsRoutes,
 	...errorRoutes,
-	...newRoutes,
+	...articleRoutes,
 ]
 
 const router = createRouter({

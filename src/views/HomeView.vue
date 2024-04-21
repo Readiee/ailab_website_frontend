@@ -5,7 +5,7 @@
     <ProjectsSection />
     <PublicationsSection />
     <EmployeesSection />
-    <NewsSection />
+    <ArticlesSection />
     <ContactUsSections />
   </div>
 </template>
@@ -16,7 +16,7 @@ import PartnersSection from '@/components/home/PartnersSection.vue'
 import ProjectsSection from '@/components/home/ProjectsSection.vue'
 import PublicationsSection from '@/components/home/PublicationsSection.vue'
 import EmployeesSection from '@/components/home/EmployeesSection.vue'
-import NewsSection from '@/components/home/NewsSection.vue'
+import ArticlesSection from '@/components/home/ArticlesSection.vue'
 import ContactUsSections from '@/components/home/ContactUsSections.vue'
 // import AppSectionIndent from '@/components/AppSectionIndent.vue'
 </script>

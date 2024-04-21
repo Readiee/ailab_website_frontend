@@ -13,8 +13,8 @@ export async function getEmployees() {
 	return mainApi.get('/get-employees/')
 }
 
-export async function getNews() {
-	return mainApi.get('/get-news/')
+export async function getArticles() {
+	return mainApi.get('/get-articles/')
 }
 
 export async function createContact( contact:Contact ) {

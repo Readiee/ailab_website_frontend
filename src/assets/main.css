@@ -246,3 +246,11 @@ button:disabled {
   background: rgba(0,0,0, 0.7);
   opacity: 0.7;
  }
+
+ 
+.hover-border {
+  transition: .3s ease-in-out;
+}
+.hover-border:hover {
+  box-shadow: inset 0px 0px 0px 1px var(--purple);
+}

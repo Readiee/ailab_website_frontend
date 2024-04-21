@@ -4,7 +4,7 @@
       ref="{swiperRef}"
       :slides-per-view="3"
       :centered-slides="false"
-      :space-between="20"
+      :space-between="32"
       :navigation="true"
       :modules="modules"
       :breakpoints="{

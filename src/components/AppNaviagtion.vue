@@ -8,7 +8,7 @@
         <a @click="scrollToProjects()">Проекты</a>
         <a @click="scrollToPublication()">Публикации</a>
         <a @click="scrollToteam()">Команда</a>
-        <a @click="scrollToNews()">Новости</a>
+        <a @click="scrollToArticles()">Новости</a>
       </ul>
       <AppBtn size="small" kind="secondary" @click="scrollToContactUs()">Связь с нами</AppBtn>
     </div>
@@ -46,7 +46,7 @@
             Команда
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToNews()">
+          <a @click="scrollToArticles()">
             Новости
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
@@ -117,10 +117,10 @@ const scrollToContactUs = () => {
 	isMenuOpen.value = false
 }
 
-const scrollToNews = () => {
+const scrollToArticles = () => {
 	router.push({ name: 'home'}).then(() => {
 		setTimeout(() => {
-			scrollTo('news-section')
+			scrollTo('articles-section')
 		}, scrollDelay)
 	})
 	isMenuOpen.value = false

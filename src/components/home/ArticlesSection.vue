@@ -1,18 +1,18 @@
 <template>
-  <div id="news-section" class="container">
+  <div id="articles-section" class="container">
     <div class="section">
       <SectionHeader
         :title="props.title"
         caption="Оставайтесь в курсе последних достижений и событий нашей лаборатории"
       />
 
-      <div class="news-list">
-        <template v-for="n in news.slice(0, countOfNewsToShow)" :key="n">
-          <NewCard :new="n" />
+      <div class="articles-list">
+        <template v-for="n in articles.slice(0, countOfArticlesToShow)" :key="n">
+          <ArticleCard :article="n" />
         </template>
       </div>
 
-      <AppBtn v-if="!allNewsAreShowed" class="mt-12" variant="plain" @click="showMoreNews">Показать еще</AppBtn>
+      <AppBtn v-if="!allArticlesAreShowed" class="mt-12" variant="plain" @click="showMoreArticles">Показать еще</AppBtn>
     </div>
 
     <div class="design">
@@ -24,32 +24,34 @@
 
 <script setup lang="ts">
 import SectionHeader from '@/components/SectionHeader.vue'
-import NewCard from '@/components/NewCard.vue'
+import ArticleCard from '@/components/ArticleCard.vue'
 import AppBtn from '@/components/UI/AppBtn.vue'
-import useNews from '@/hooks/useNews'
+import useArticles from '@/hooks/useArticles'
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const { news, currentNewId } = useNews()
+const { articles, currentArticleSlug } = useArticles()
 
-watch(() => route.params.id, (newVal) => {
-	currentNewId.value = Number(newVal)
+watch(() => route.params.slug, (newVal) => {
+	currentArticleSlug.value = String(newVal)
 })
 
 const props = defineProps({
 	title: { type: String, default: 'Новости'}
 })
 
-const countOfCardsInARow = route.name == 'home' ? 3 : 2 
-const countOfNewsToShow = ref(countOfCardsInARow)
-const allNewsAreShowed = computed(() => {
-	return countOfNewsToShow.value >= news.value.length
+// const countOfCardsInARow = route.name == 'home' ? 3 : 2 
+// const countOfArticlesToShow = ref(countOfCardsInARow)
+const countOfArticlesToShow = ref(6)
+const allArticlesAreShowed = computed(() => {
+	return countOfArticlesToShow.value >= articles.value.length
 }) 
 
-const showMoreNews = () => {
-	if(countOfNewsToShow.value < news.value.length) {
-		countOfNewsToShow.value += countOfCardsInARow
+const showMoreArticles = () => {
+	if(countOfArticlesToShow.value < articles.value.length) {
+		// countOfArticlesToShow.value += countOfCardsInARow
+		countOfArticlesToShow.value += 6
 	}
 }
 
@@ -58,10 +60,10 @@ const showMoreNews = () => {
 <style scoped lang="scss">
 .section {
   width: 100%;
-  .news-list {
+  .articles-list {
   // width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 

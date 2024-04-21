@@ -1,20 +1,18 @@
 <template>
-  <div id="new-card" class="new-item cursor-pointer" @click="routeToNew()">
+  <div id="article-card" class="article-item cursor-pointer hover-border" @click="routeToArticle()">
     <div class="start py-1">
       <div class="img-container">
-        <img class="aspect-[16/9] cursor-pointer" :src="props.new.photo" alt="image" @click="routeToNew()">
+        <img class="aspect-[16/9] pointer-events-none" :src="props.article.photo" alt="image" @click="routeToArticle()">
       </div>
     </div>
     <div class="end mt-1">
       <div class="end__top">
-        <!-- <h4 class="primary mb-3">{{ formatDate(props.new.date) }}</h4> -->
-        <h3>{{ props.new.title }}</h3>
-        <p class="mt-3 mb-4">{{ props.new.desc }}</p>
+        <h3>{{ props.article.title }}</h3>
       </div>
       <div class="end__bottom mt-auto">
-        <AppBtnWithIcon size="medium" variant="plain" @click="routeToNew()">Читать статью</AppBtnWithIcon>
-        <!-- <p class="text-base font-semibold">{{ formatDate(props.new.date) }}</p> -->
-        <p class="text-base font-semibold">{{ formatDate(props.new.date) }}</p>
+        <!-- <AppBtnWithIcon size="medium" variant="plain" @click="routeToArticle()">Читать статью</AppBtnWithIcon> -->
+        <!-- <p class="text-base font-semibold">{{ formatStringDate(props.article.date) }}</p> -->
+        <p class="text-base font-semibold mt-4">{{ formatStringDate(props.article.date) }}</p>
       </div>
     </div>
   </div>
@@ -22,26 +20,25 @@
 
 <script setup lang="ts">
 import AppBtnWithIcon from '@/components/UI/AppBtnWithIcon.vue'
-import type { New } from '@/api/types'
+import type { Article } from '@/api/types'
 import { useRouter } from 'vue-router'
-import formatDate from '@/hooks/useDateFormat'
+import formatStringDate from '@/hooks/useDateFormat'
 
 const props = defineProps({
-	new: { type: Object as () => New, required: true }
+	article: { type: Object as () => Article, required: true }
 })
 
 const router = useRouter()
 
-const routeToNew = () => {
-	const path = '/news/' + props.new.id
+const routeToArticle = () => {
+	const path = '/articles/' + props.article.slug
 	router.replace({ path: path })
 }
 
 </script>
 
 <style scoped lang="scss">
-.new-item {
-  padding: 32px;
+.article-item {
   border-radius: 8px;
   border: 1px solid var(--ghost-grey);
   background: var(--dark);
@@ -77,17 +74,17 @@ const routeToNew = () => {
 } 
 
 
-#new-card {
+#article-card {
   width: 100%;
+  max-width: 560px;
   flex-direction: column;
-  align-items: center;
   display: flex;
   flex-grow: 1;
   flex-basis: 402px;
   min-width: 350px;
   // max-width: calc(50% - 20px); 
   // max-width: 402px;  
-  padding: 20px 24px;
+  padding: 24px 28px;
 
   .end {
     height: 100%;
@@ -100,8 +97,8 @@ const routeToNew = () => {
     margin-top: 10px;
       h3 {
         font-weight: 400;
-        font-size: 16px;
-        line-height: 1.25em;
+        font-size: 14px;
+        line-height: 1.4em;
         text-transform: uppercase;
         display: -webkit-box;
         -webkit-box-orient: vertical;

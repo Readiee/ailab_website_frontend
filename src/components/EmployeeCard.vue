@@ -10,7 +10,7 @@
       <h3>{{ props.employee.first_name }}</h3>
       <h3>{{ props.employee.last_name }}</h3>
     </div>
-    <a class="mt-auto" :href="props.employee.link">
+    <a v-if="props.employee.link" class="mt-auto" :href="props.employee.link">
       <!-- <AppBtnWithIcon variant="plain" size="small">Узнать больше</AppBtnWithIcon> -->
       <button>
         Узнать больше
@@ -28,6 +28,7 @@
         </svg>
       </button>
     </a>
+    <hr v-else class="w-1/2">
   </div>
 </template>
 
@@ -44,13 +45,6 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
-.hover-border {
-  transition: .3s ease-in-out;
-}
-.hover-border:hover {
-  box-shadow: inset 0px 0px 0px 1px var(--purple);
-  // border: 2px solid var(--purple);
-}
 
 .employee-item {
   min-width: 346px; // карточка
