@@ -2,26 +2,28 @@
   <nav>
     <!-- Desktop -->
     <div id="desktop_nav" class="container gap-1">
-      <RouterLink to="/"><img class="logo" src="@/assets/logo.svg" @click="scrollToHeader"></RouterLink>
+      <RouterLink to="/">
+        <img class="logo" src="@/assets/logo.svg" @click="scrollToHeader">
+      </RouterLink>
       <ul>
         <a @click="scrollToHeader()">Главная</a>
-        <a @click="scrollToProjects()">Проекты</a>
-        <a @click="scrollToPublication()">Публикации</a>
-        <a @click="scrollToteam()">Команда</a>
-        <a @click="scrollToArticles()">Новости</a>
+        <a @click="scrollToSection('projects-section')">Проекты</a>
+        <a @click="scrollToSection('publications-section')">Публикации</a>
+        <a @click="scrollToSection('team-section')">Команда</a>
+        <a @click="scrollToSection('articles-section')">Новости</a>
       </ul>
-      <AppBtn size="small" kind="secondary" @click="scrollToContactUs()">Связь с нами</AppBtn>
+      <AppBtn 
+        size="small" 
+        kind="secondary" 
+        @click="scrollToSection('contacts-section')"
+      >
+        Связь с нами
+      </AppBtn>
     </div>
-
 
     <!-- Mobile -->
     <div id="mobile_nav" class="container flex justify-between items-center">
       <RouterLink to="/"><img class="logo" src="@/assets/logo.svg"></RouterLink>
-      <!-- <div class="menu-icon" @click="toggleMenu">
-        <img v-if="!isMenuOpen" src="@/assets/icons/menu.svg" alt="menu">
-        <img v-if="isMenuOpen" src="@/assets/icons/cross.svg" alt="close">
-      </div> -->
-      
       <MenuBurger v-model="isMenuOpen" class="menu-icon" />
     </div>  
   </nav>
@@ -34,23 +36,23 @@
             Главная
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToProjects()">
+          <a @click="scrollToSection('projects-section')">
             Проекты
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToPublication()">
+          <a @click="scrollToSection('publications-section')">
             Публикации
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToteam()">
+          <a @click="scrollToSection('team-section')">
             Команда
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToArticles()">
+          <a @click="scrollToSection('articles-section')">
             Новости
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
-          <a @click="scrollToContactUs()">
+          <a @click="scrollToSection('contacts-section')">
             Связь с нами
             <img src="@/assets/icons/forward.svg" alt="">
           </a>
@@ -69,9 +71,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const isMenuOpen = ref(false)
-// const toggleMenu = () => {
-// 	isMenuOpen.value = !isMenuOpen.value
-// }
 const scrollToHeader = () => {
 	router.push({ name: 'home'}).then(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth'})
@@ -81,48 +80,12 @@ const scrollToHeader = () => {
 
 const scrollDelay = 100
 
-const scrollToProjects = () => {
+const scrollToSection = (sectionId:string) => {
 	router.push({ name: 'home'}).then(() => {
 		setTimeout(() => {
-			scrollTo('projects-section')
+			scrollTo(sectionId)
 		}, scrollDelay)
 	})	
-	isMenuOpen.value = false
-}
-
-const scrollToPublication = () => {
-	router.push({ name: 'home'}).then(() => {
-		setTimeout(() => {
-			scrollTo('publications-section')
-		}, scrollDelay)
-	})	
-	isMenuOpen.value = false
-}
-
-const scrollToteam = () => {
-	router.push({ name: 'home'}).then(() => {
-		setTimeout(() => {
-			scrollTo('team-section')
-		}, scrollDelay)
-	})	
-	isMenuOpen.value = false
-}
-
-const scrollToContactUs = () => {
-	router.push({ name: 'home'}).then(() => {
-		setTimeout(() => {
-			scrollTo('contacts-section')
-		}, scrollDelay)
-	})
-	isMenuOpen.value = false
-}
-
-const scrollToArticles = () => {
-	router.push({ name: 'home'}).then(() => {
-		setTimeout(() => {
-			scrollTo('articles-section')
-		}, scrollDelay)
-	})
 	isMenuOpen.value = false
 }
 
