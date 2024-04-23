@@ -48,6 +48,10 @@ watch(articleItem, newVal => {
   max-width: 980px;
 
   .content__header {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    
     @media screen and (max-width: 510px) {
       margin-top: -8px;
     }

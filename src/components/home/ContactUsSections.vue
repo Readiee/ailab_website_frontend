@@ -126,13 +126,13 @@ const submitForm = async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 32px;
 
     .form-line {
       width: 100%;
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 32px;
 
       @media screen and (max-width: 564px) {
         flex-direction: column;

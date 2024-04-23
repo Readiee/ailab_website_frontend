@@ -126,6 +126,9 @@ const routeToProject = () => {
 
   .end {
     width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
   }
 
   @media screen and (max-width: 959px) {
@@ -192,6 +195,10 @@ const routeToProject = () => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    max-width: 100%;
     .end__top {
     margin-top: 10px;
       h3 {

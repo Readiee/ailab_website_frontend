@@ -74,6 +74,10 @@ const routeToArticle = () => {
 
 
 #article-card {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+
   width: 100%;
   max-width: 620px;
   flex-direction: column;
@@ -93,7 +97,7 @@ const routeToArticle = () => {
 
     padding: 0 4px;
     .end__top {
-    margin-top: 10px;
+      margin-top: 10px;
       h3 {
         font-weight: 400;
         font-size: 14px;

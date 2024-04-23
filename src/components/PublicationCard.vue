@@ -90,6 +90,7 @@ const props = defineProps({
 
 @media screen and (max-width: 721px) {
     .publication-item {
+      position: relative;
       grid-template-columns: 38px 1fr;
       padding: 20px 24px;
     }
@@ -98,7 +99,12 @@ const props = defineProps({
     }
 
     .main {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      overflow: hidden;
       p, h3 {
+        max-width: 100%;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;

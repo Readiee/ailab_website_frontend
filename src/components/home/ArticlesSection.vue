@@ -61,13 +61,11 @@ const showMoreArticles = () => {
 .section {
   width: 100%;
   .articles-list {
-  // width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-
-  transition: 0.2 ease-in-out;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }
 
