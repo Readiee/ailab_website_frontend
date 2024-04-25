@@ -10,6 +10,7 @@
           <ProjectCard v-if="project.slug != currentProjectSlug" :project="project" />
         </template>
       </div>
+      <AppBtn v-if="!allProjectsAreShowed" class="mt-12" variant="plain" @click="loadMore()">Показать еще</AppBtn>
     </div>
     <div class="design">
       <img class="light-1" src="@/assets/images/light-3.png" alt="design">
@@ -28,8 +29,9 @@ import ProjectsTypeSwitch from '@/components/ProjectsTypeSwitch.vue'
 import useProjects from '@/hooks/useProjects'
 import { useRoute } from 'vue-router'
 import { ref, watch } from 'vue'
+import AppBtn from '@/components/UI/AppBtn.vue'
 
-const { projects, isRealizedSwitch } = useProjects()
+const { projects, isRealizedSwitch, loadMore, allProjectsAreShowed } = useProjects()
 
 const props = defineProps({
 	title: { type: String, default: 'Проекты'}

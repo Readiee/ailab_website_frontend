@@ -19,6 +19,10 @@ export default function useProjects() {
 	const loadMore = () => {
 		slice.value += 4
 	}
+
+	const allProjectsAreShowed = computed(() => {
+		return slice.value >= data.value.filter(p => p.is_realized == isRealizedSwitch.value).length
+	})
 	
 	const projects = computed(() => {
 		return data.value.filter(p => p.is_realized == isRealizedSwitch.value).slice(0, slice.value)
@@ -27,7 +31,7 @@ export default function useProjects() {
 	onMounted(fetching)
 
 	return {
-		projects, isRealizedSwitch
+		projects, isRealizedSwitch, loadMore, allProjectsAreShowed
 	} 
 } 
 
