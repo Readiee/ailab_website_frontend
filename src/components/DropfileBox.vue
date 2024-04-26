@@ -41,7 +41,7 @@
           <img ref="originalImage" class="rounded-md m-auto" :src="previewImageSrc" alt="imgPreview">
         </div>
         <div v-show="isShownProccessedImage" class="file-loaded-view w-full h-full flex p-4">
-          <img id="processed-image" ref="processedImage" alt="proccessedImage" src="123" class="rounded-md m-auto">
+          <img id="processed-image" ref="processedImage" alt="proccessedImage" src="" class="rounded-md m-auto">
         </div>
       </div>
 
