@@ -25,6 +25,11 @@ npm run build
 npm run lint
 ```
 
+### Подтянуть CSS-стили Tailwind
+
+```sh
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+```
 
 ### API-шки бэков
 
