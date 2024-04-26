@@ -47,7 +47,7 @@ const props = defineProps({
 
 
 .employee-item {
-  min-width: 346px; // карточка
+  min-width: 370px; // карточка
 
   display: flex;
   flex-direction: column;
