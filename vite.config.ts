@@ -19,7 +19,7 @@ export default defineConfig({
 	},
 	define: { 'process.env': {
 		MAIN_API_URL: 'http://10.3.3.147/api/v1', // основной API
-		PHOTO_API_URL: 'http://10.3.3.147/photo/', // API нейронок-фото
-		VIDEO_API_URL: 'http://10.3.3.147/webrtc/', // API нейронок-видео
+		PHOTO_API_URL: 'http://10.3.3.147/api/ai/photo/', // API нейронок-фото
+		VIDEO_API_URL: 'http://10.3.3.147/api/ai/webrtc/', // API нейронок-видео
 	} },
 })
