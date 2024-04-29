@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 const mainApi = axios.create({
 	baseURL: process.env.MAIN_API_URL,
 	timeout: 1000,
