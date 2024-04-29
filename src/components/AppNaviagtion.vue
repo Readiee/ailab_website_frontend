@@ -2,9 +2,7 @@
   <nav>
     <!-- Desktop -->
     <div id="desktop_nav" class="container gap-1">
-      <RouterLink to="/">
-        <img class="logo" src="@/assets/logo.svg" @click="scrollToHeader">
-      </RouterLink>
+      <TheAppLogo class="cursor-pointer" @click="scrollToHeader" />
       <ul>
         <a @click="scrollToHeader()">Главная</a>
         <a @click="scrollToSection('projects-section')">Проекты</a>
@@ -68,6 +66,8 @@ import MenuBurger from '@/components/UI/MenuBurger.vue'
 import { ref } from 'vue'
 import scrollTo from '@/hooks/scrollTo'
 import { useRouter } from 'vue-router'
+import TheAppLogo from '@/components/TheAppLogo.vue'
+
 
 const router = useRouter()
 const isMenuOpen = ref(false)
