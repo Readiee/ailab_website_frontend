@@ -21,7 +21,7 @@
 
     <!-- Mobile -->
     <div id="mobile_nav" class="container flex justify-between items-center">
-      <RouterLink to="/"><img class="logo" src="@/assets/logo.svg"></RouterLink>
+      <TheAppLogo class="cursor-pointer" @click="scrollToHeader" />
       <MenuBurger v-model="isMenuOpen" class="menu-icon" />
     </div>  
   </nav>
