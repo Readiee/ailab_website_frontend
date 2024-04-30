@@ -1,5 +1,5 @@
 <template>
-  <form id="form" enctype="multipart/form-data" method="post">        
+  <form id="form" enctype="multipart/form-data" method="post">
     <div 
       class="box"
       :class="{ 'active-drag': isDragging, 'file-loaded': fileIsLoaded, 'border-r-bottom-0': fileIsLoaded }"
@@ -29,7 +29,6 @@
               <br><br>
               Файл слишком большой.
             </div>
-
             <div v-if="showTypeError" class="error">
               <br><br>
               Данный формат файлов не поддерживается.
@@ -38,10 +37,10 @@
         </label>
 
         <div v-show="fileIsLoaded && !isShownProccessedImage" class="file-loaded-view w-full h-full flex p-4">
-          <img ref="originalImage" class="rounded-md m-auto" :src="previewImageSrc" alt="imgPreview">
+          <img class="rounded-md m-auto" :src="previewImageSrc" alt="imgPreview">
         </div>
         <div v-show="isShownProccessedImage" class="file-loaded-view w-full h-full flex p-4">
-          <img id="processed-image" ref="processedImage" alt="proccessedImage" src="" class="rounded-md m-auto">
+          <img id="processed-image" alt="proccessedImage" src="" class="rounded-md m-auto">
         </div>
       </div>
 
@@ -50,23 +49,18 @@
       </div>
     </div>
 
-
     <!-- Меню, когда файл загружен -->
     <div v-if="fileIsLoaded && !fileIsProcessed" class="actions flex mb-6 p-4 base-box">
       <div class="actions__start flex items-center mr-auto overflow-hidden max-w-full">
         <h5 class="overflow-hidden whitespace-nowrap text-ellipsis">{{ files[0].name }}</h5>
         <p class="text-sm whitespace-nowrap ml-3">{{ fileSize }}</p>
       </div>
-        
       <div class="actions__end flex items-center">
         <div id="y-line-1" class="y-line mx-8" />
-
         <label for="fileInput" class="w-fit">
           <h3 class="hover text-sm whitespace-nowrap">Выбрать файл</h3>
         </label>
-
         <div id="y-line-2" class="y-line mx-8" />
-        
         <AppBtn type="submit" size="small" class="" :loading="loading" @click="loading = true">Отправить</AppBtn>
       </div>
     </div>
@@ -108,11 +102,16 @@ import { ref, computed, onMounted } from 'vue'
 import AppBtn from '@/components/UI/AppBtn.vue'
 import useFileSize from '@/hooks/useFileSize'
 import AppIconBtn from '@/components/UI/AppIconBtn.vue'
-import useFileFormat from '../hooks/useFileFormat'
+import useFileFormat from '@/hooks/useFileFormat'
 
 const isDragging = ref(false)
 const files = ref<File[]>([])
 const file = ref<HTMLInputElement>()
+
+const isShownProccessedImage = ref(false)
+const fileIsProcessed = ref(false)
+const proccesedImageUrl = ref('')
+const loading = ref(false)
 
 // const imgPreview = document.getElementById('imgPreview')
 const previewImageSrc = ref('')
@@ -149,6 +148,7 @@ const onChange = () => {
 		const fileFormat = useFileFormat(file.value.files[0].name)
 
 		if(fileFormat != 'png' && fileFormat != 'jpg' && fileFormat != 'jpeg') {
+
 			showTypeError.value = true
 			if (file.value) {
 				file.value.value = ''
@@ -169,7 +169,7 @@ const onChange = () => {
 			showSizeError.value = false
 			showTypeError.value = false
 		}
-	} 
+	}
 }
 
 const showSizeError = ref(false)
@@ -196,11 +196,6 @@ const drop = (e: DragEvent) => {
 const fileIsLoaded = computed(() => {
 	return files.value.length > 0
 })
-
-const isShownProccessedImage = ref(false)
-const fileIsProcessed = ref(false)
-const proccesedImageUrl = ref('')
-const loading = ref(false)
 
 let processedImage: HTMLElement | null
 // let downloadLink = document.getElementById('download-link')
