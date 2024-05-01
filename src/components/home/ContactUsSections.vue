@@ -28,7 +28,7 @@
         <AppMap />
         <div class="flex justify-between mt-3 map-undercaption">
           <a class="underline" href="https://yandex.ru/maps/62/krasnoyarsk/house/ulitsa_akademika_kirenskogo_26k1/bUsYcQ5nTE0BQFtvfXV4dXhnYg==/?ll=92.797579%2C55.994324&z=19.54">ул. Академика Киренского, 26, к.1</a>
-          <a href="tel:+71234567890">+7 123 456 78 90</a>
+          <!-- <a href="tel:+71234567890">+7 123 456 78 90</a> -->
         </div>
       </div>
     </div>
