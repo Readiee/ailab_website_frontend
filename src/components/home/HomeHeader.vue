@@ -8,7 +8,7 @@
         <span class="plain">ИКИТ СФУ</span>
       </h1>
       <p class="my-6">Добро пожаловать в лабораторию искусственного интеллекта, где мы преображаем фантазии в инновации!</p>
-      <p class="mb-10 text-base">Наша лаборатория — часть <a class="text-white " href="https://ai-center.sfu-kras.ru/">Центра ИИ СФУ</a></p>
+      <p class="mb-10 text-base">Также приглашаем вас посетить сайт <a class="text-white " href="https://ai-center.sfu-kras.ru/">Центра ИИ СФУ</a></p>
       <AppBtnWithIcon class="mt-2" icon="forward" @click="scrollTo('projects-section')">К проектам</AppBtnWithIcon>
     </div>
 
