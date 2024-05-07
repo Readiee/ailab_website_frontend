@@ -12,7 +12,8 @@
         <AppImage v-if="articleItem" class="h-96" :x="16" :y="9" :img="articleItem.photo" />
       </div>
       <div class="text-base mt-8">
-        <div v-html="articleItem?.text" />  
+        <div class="article-text" v-html="articleItem?.text" /> 
+        <!-- <p>{{ articleItem?.text }}</p> -->
       </div>
     </div>
   </div>
@@ -41,6 +42,10 @@ watch(articleItem, newVal => {
 </script>
 
 <style scoped lang="scss">
+.article-text {
+  font-size: 18px;
+  line-height: 1.3em;
+}
 .container {
   max-width: 980px;
 
