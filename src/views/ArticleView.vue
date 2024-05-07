@@ -4,20 +4,18 @@
       <div class="content__header mt-4">
         <span class="color-caption text-sm">Новость</span>
         <h3 class="mt-4 mb-4 uppercase text-lg">{{ articleItem?.title }}</h3>
-        <p v-if="articleItem" class="text-base">{{ formatStringDate(articleItem.date) }}</p>
+        <p v-if="articleItem" class="text-base">
+          {{ formatStringDate(articleItem.date) }}
+        </p>
       </div>
-
       <div class="image mt-6">
         <AppImage v-if="articleItem" class="h-96" :x="16" :y="9" :img="articleItem.photo" />
       </div>
-
       <div class="text-base mt-8">
-        <p>{{ articleItem?.text }}</p>
-        <!-- <div v-html="articleItem?.text" />     -->
+        <div v-html="articleItem?.text" />  
       </div>
     </div>
   </div>
-
   <ArticlesSection title="Другие новости" style="margin-top: 160px;" />
 </template>
 
@@ -28,7 +26,6 @@ import { watch } from 'vue'
 import ArticlesSection from '@/components/home/ArticlesSection.vue'
 import AppImage from '@/components/UI/AppImage.vue'
 import formatStringDate from '@/hooks/useDateFormat'
-
 const route = useRoute()
 const { articleItem, slug } = useArticle()
 
