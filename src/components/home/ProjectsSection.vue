@@ -1,7 +1,7 @@
 <template>
   <div id="projects-section" class="container">
     <div class="section">
-      <SectionHeader :title="props.title" caption="Студенческие проекты, выполненые под руководством Пятаевой А.В., руководителя лаборатории" />
+      <SectionHeader :title="props.title" caption="Студенческие проекты, выполненные под руководством Пятаевой А.В., руководителя лаборатории" />
       <ProjectsTypeSwitch v-model="isRealizedSwitch" class="mb-8" />
 
       <!-- <ProjectsGrid :projects="projects" /> -->
